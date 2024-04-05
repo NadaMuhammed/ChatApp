@@ -2,10 +2,14 @@ package com.example.chatapp.ui.auth.fragments.register
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.chatapp.base.BaseViewModel
+import com.example.chatapp.data.model.ViewMessage
 import com.example.chatapp.data.repositories.AuthRepo
 import com.example.chatapp.data.repositories.AuthRepoImpl
+import kotlinx.coroutines.launch
 
-class RegisterViewModel : ViewModel() {
+class RegisterViewModel : BaseViewModel() {
     val authRepo: AuthRepo = AuthRepoImpl()
     val emailLiveData: MutableLiveData<String> = MutableLiveData()
     val emailErrorLiveData: MutableLiveData<String?> = MutableLiveData()
@@ -39,6 +43,15 @@ class RegisterViewModel : ViewModel() {
 
     fun register() {
         if (!validate()) return
-        authRepo.register(emailLiveData.value!!, usernameLivaData.value!!, passwordLivaData.value!!)
+        viewModelScope.launch {
+            loadingLiveData.value = true
+            try {
+                authRepo.register(emailLiveData.value!!, usernameLivaData.value!!, passwordLivaData.value!!)
+                loadingLiveData.value = false
+            } catch (e: Exception){
+                loadingLiveData.value = false
+                errorDialogLiveData.value = ViewMessage("Error", e.localizedMessage, null, null, null, null)
+            }
+        }
     }
 }

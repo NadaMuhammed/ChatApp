@@ -7,31 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.chatapp.R
+import com.example.chatapp.base.BaseFragment
 import com.example.chatapp.databinding.FragmentRegisterBinding
 
-class RegisterFragment : Fragment() {
-    lateinit var binding: FragmentRegisterBinding
-    lateinit var viewModel: RegisterViewModel
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding>() {
+
+    override fun getLayoutId(): Int = R.layout.fragment_register
+
+    override fun initViewModel(): RegisterViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-    }
-
-    private fun navigateToHome() {
-        val action = RegisterFragmentDirections
-            .actionRegisterFragmentToHomeFragment()
-        findNavController()
-            .navigate(action)
     }
 }
