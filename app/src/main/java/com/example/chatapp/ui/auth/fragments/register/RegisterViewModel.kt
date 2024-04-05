@@ -17,6 +17,7 @@ class RegisterViewModel : BaseViewModel() {
     val passwordErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val usernameLivaData: MutableLiveData<String> = MutableLiveData()
     val usernameErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val events: MutableLiveData<RegisterEvents> = MutableLiveData()
 
     fun validate(): Boolean {
         var isValid = true
@@ -48,6 +49,7 @@ class RegisterViewModel : BaseViewModel() {
             try {
                 authRepo.register(emailLiveData.value!!, usernameLivaData.value!!, passwordLivaData.value!!)
                 loadingLiveData.value = false
+                events.value = RegisterEvents.NavigateToHomeEvent
             } catch (e: Exception){
                 loadingLiveData.value = false
                 errorDialogLiveData.value = ViewMessage("Error", e.localizedMessage, null, null, null, null)

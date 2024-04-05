@@ -16,6 +16,6 @@ class AuthRepoImpl: AuthRepo {
     }
 
     override suspend fun login(email: String, password: String) {
-        TODO("Not yet implemented")
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).await()
     }
 }

@@ -75,7 +75,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         dialog?.show()
     }
 
-    fun initObservers() {
+    open fun initObservers() {
         viewModel.loadingLiveData.observe(viewLifecycleOwner) {
             if (it) {
                 showLoader()

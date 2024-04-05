@@ -1,8 +1,7 @@
 package com.example.chatapp.ui.auth.fragments.register
 
-open class RegisterEvents{
-
+sealed class RegisterEvents{
+    data object NavigateToHomeEvent: RegisterEvents()
+    data object NavigateToLoginEvent: RegisterEvents()
+    data object NavigateToResetPassword: RegisterEvents()
 }
-class NavigateToHomeEvent: RegisterEvents()
-class NavigateToLoginEvent: RegisterEvents()
-class NavigateToResetPassword: RegisterEvents()
