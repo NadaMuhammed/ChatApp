@@ -1,12 +1,11 @@
 package com.example.chatapp.ui.auth.fragments.register
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.chatapp.base.BaseViewModel
 import com.example.chatapp.data.model.ViewMessage
-import com.example.chatapp.data.repositories.AuthRepo
-import com.example.chatapp.data.repositories.AuthRepoImpl
+import com.example.chatapp.data.repositories.auth_repo.AuthRepo
+import com.example.chatapp.data.repositories.auth_repo.AuthRepoImpl
 import kotlinx.coroutines.launch
 
 class RegisterViewModel : BaseViewModel() {

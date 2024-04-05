@@ -1,4 +1,4 @@
-package com.example.chatapp.data.repositories
+package com.example.chatapp.data.repositories.auth_repo
 
 import com.example.chatapp.data.model.User
 

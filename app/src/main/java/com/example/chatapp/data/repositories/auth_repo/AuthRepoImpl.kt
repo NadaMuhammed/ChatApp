@@ -1,7 +1,8 @@
-package com.example.chatapp.data.repositories
+package com.example.chatapp.data.repositories.auth_repo
 
 import com.example.chatapp.Constants
 import com.example.chatapp.data.model.User
+import com.example.chatapp.data.repositories.auth_repo.AuthRepo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
