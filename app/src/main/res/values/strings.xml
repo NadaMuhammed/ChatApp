@@ -20,7 +20,7 @@
     <string name="password_confirm">Password Confirmation</string>
     <string name="create_account">Create Account</string>
     <string-array name="rooms_fragments_titles">
-        <item>MyRoomsFragment</item>
-        <item>AllRoomsFragment</item>
+        <item>My Rooms</item>
+        <item>All Rooms</item>
     </string-array>
 </resources>

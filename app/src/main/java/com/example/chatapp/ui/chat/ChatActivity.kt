@@ -1,30 +1,24 @@
 package com.example.chatapp.ui.chat
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModelProvider
+import com.example.chatapp.Constants
+import com.example.chatapp.R
+import com.example.chatapp.base.BaseActivity
+import com.example.chatapp.data.model.Room
 import com.example.chatapp.databinding.ActivityChatBinding
-import com.example.chatapp.ui.createroom.RoomCreationActivity
 
-class ChatActivity : AppCompatActivity() {
-    private var _binding: ActivityChatBinding? = null
-    private val binding: ActivityChatBinding get() = _binding!!
+class ChatActivity : BaseActivity<ChatViewModel,ActivityChatBinding>() {
 
-
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityChatBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.sendRoomBtn.setOnClickListener { navigateToRoomCreation() }
+        val room = intent.getSerializableExtra(Constants.ROOM, Room::class.java)
     }
 
-    private fun navigateToRoomCreation() {
-        startActivity(Intent(this, RoomCreationActivity::class.java))
-        finish()
-    }
+    override fun getLayoutId(): Int = R.layout.activity_chat
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
+    override fun initViewModel(): ChatViewModel = ViewModelProvider(this)[ChatViewModel::class.java]
 }

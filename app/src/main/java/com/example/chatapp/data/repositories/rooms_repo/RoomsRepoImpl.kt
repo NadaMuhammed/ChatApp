@@ -12,4 +12,10 @@ class RoomsRepoImpl: RoomsRepo {
         val room = Room(document.id, title, category, description)
         document.set(room).await()
     }
+
+    override suspend fun getRooms(): List<Room> {
+        val collection = Firebase.firestore.collection(Constants.ROOMS)
+        val querySnapshot = collection.get().await()
+        return querySnapshot.toObjects(Room::class.java)
+    }
 }
