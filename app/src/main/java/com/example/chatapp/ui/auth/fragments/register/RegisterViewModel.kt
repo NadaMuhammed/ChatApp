@@ -48,7 +48,7 @@ class RegisterViewModel : BaseViewModel() {
             try {
                 authRepo.register(emailLiveData.value!!, usernameLivaData.value!!, passwordLivaData.value!!)
                 loadingLiveData.value = false
-                events.value = RegisterEvents.NavigateToHomeEvent
+                events.value = RegisterEvents.NavigateToLoginEvent
             } catch (e: Exception){
                 loadingLiveData.value = false
                 errorDialogLiveData.value = ViewMessage("Error", e.localizedMessage, null, null, null, null)

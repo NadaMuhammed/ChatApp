@@ -23,7 +23,7 @@ class ChatViewModel : BaseViewModel() {
                 roomsRepo.sendMessage(messageLiveData.value!!, room.id)
                 messageLiveData.value = ""
             } catch (e:Exception){
-                Log.e("ChatViewModel", e.localizedMessage)
+                e.localizedMessage?.let { Log.e("ChatViewModel", it) }
             }
         }
     }

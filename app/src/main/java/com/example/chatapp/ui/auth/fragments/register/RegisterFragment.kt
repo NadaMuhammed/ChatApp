@@ -15,7 +15,6 @@ import com.example.chatapp.databinding.FragmentRegisterBinding
 import com.example.chatapp.ui.home.HomeActivity
 
 class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding>() {
-
     override fun getLayoutId(): Int = R.layout.fragment_register
 
     override fun initViewModel(): RegisterViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
@@ -33,7 +32,9 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
                     val intent = Intent(activity, HomeActivity::class.java)
                     startActivity(intent)
                 }
-                is RegisterEvents.NavigateToLoginEvent -> {}
+                is RegisterEvents.NavigateToLoginEvent -> {
+                    Navigation.findNavController(binding.root).navigate(R.id.action_registerFragment_to_loginFragment)
+                }
                 is RegisterEvents.NavigateToResetPassword -> {}
             }
         }
