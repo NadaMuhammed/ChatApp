@@ -39,7 +39,8 @@
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                tools:text="The Movies App"
+                android:layout_gravity="center"
+                tools:text="@string/movies"
                 android:text="@{room.title}"/>
 
         </LinearLayout>

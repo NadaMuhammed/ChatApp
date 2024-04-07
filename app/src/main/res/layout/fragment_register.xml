@@ -110,16 +110,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/black" />
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/register_btn_progress"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="end|center_vertical"
-                android:indeterminate="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
         </com.google.android.material.card.MaterialCardView>
 
 

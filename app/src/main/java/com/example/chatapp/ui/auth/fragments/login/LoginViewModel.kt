@@ -3,6 +3,7 @@ package com.example.chatapp.ui.auth.fragments.login
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.chatapp.base.BaseViewModel
+import com.example.chatapp.data.model.UserProvider
 import com.example.chatapp.data.model.ViewMessage
 import com.example.chatapp.data.repositories.auth_repo.AuthRepo
 import com.example.chatapp.data.repositories.auth_repo.AuthRepoImpl
@@ -22,7 +23,8 @@ class LoginViewModel : BaseViewModel() {
         viewModelScope.launch {
             loadingLiveData.value = true
             try {
-                auth.login(emailLiveData.value!!, passwordLiveData.value!!)
+                val user = auth.login(emailLiveData.value!!, passwordLiveData.value!!)
+                UserProvider.user = user
                 loadingLiveData.value = false
                 events.value = LoginEvents.NavigateToHome
             } catch (e: Exception){

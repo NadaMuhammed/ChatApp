@@ -1,4 +1,4 @@
-package com.mis.route.chatapp
+package com.example.chatapp
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -18,7 +18,7 @@ fun imageBasedOnCategory(image: ImageView, category: String) {
         image.setImageResource(R.drawable.image_movies_cat)
     } else if (category.equals(Constants.SPORTS)) {
         image.setImageResource(R.drawable.image_sports_cat)
-    } else if (category.equals(Constants.MUSIC)) {
+    } else {
         image.setImageResource(R.drawable.image_music_cat)
     }
 }

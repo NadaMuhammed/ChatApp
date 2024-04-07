@@ -23,4 +23,7 @@
         <item>My Rooms</item>
         <item>All Rooms</item>
     </string-array>
+    <string name="sports">Sports</string>
+    <string name="movies">Movies</string>
+    <string name="music">Music</string>
 </resources>
